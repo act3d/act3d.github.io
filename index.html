@@ -372,13 +372,15 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            3D perceptual representations are well suited for robotic manipulation as they easily encode occlusions and simplify spatial reasoning.
-            Many manipulation tasks require high spatial precision in end-effector pose prediction, typically demanding high-resolution 3D perceptual grids that are computationally expensive to process.
-            As a result,  most manipulation policies operate directly in 2D, foregoing 3D inductive biases.
+            3D perceptual representations are well suited for robot manipulation as they easily encode occlusions and simplify spatial reasoning. 
+            Many manipulation tasks require high spatial precision in end-effector pose prediction, which typically demands high-resolution 3D feature grids that are computationally expensive to process. 
+            As a result, most manipulation policies operate directly in 2D, foregoing 3D inductive biases. 
           </p>
           <p>
-            We propose Act3D, a manipulation policy Transformer that casts <b>6-DoF keypose prediction as 3D detection with adaptive spatial computation</b>.
-            It takes as input 3D feature clouds unprojected from one or more camera views, iteratively samples 3D point grids in free space in a coarse-to-fine manner, featurizes them using relative spatial attention to the physical feature cloud, and selects the best feature point for end-effector pose prediction.
+            We propose Act3D, a manipulation policy transformer that represents the robot's workspace using a 3D feature field with adaptive resolution. 
+            The model lifts 2D pre-trained features to 3D using sensed depth, and attends to them to compute features for sampled 3D points. 
+            It samples 3D point grids in a coarse to fine manner, featurizes them using relative-position attention, and selects where to focus the next round of point sampling.
+            In this way, it **efficiently computes 3D action maps of high spatial resolution**. 
           </p>
           <p>
             Act3D sets a new state-of-the-art in RLbench, an established manipulation benchmark.
